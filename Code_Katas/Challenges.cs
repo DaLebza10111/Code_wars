@@ -12,7 +12,7 @@ namespace Code_Katas
         static void Main(string[] args)
         {
             //Console.WriteLine($"The ball bounced {bouncingBall(3,0.66,1.5)} times");
-            //Console.WriteLine($"The ball bounced {bouncingBall(30, 0.66, 1.5)} times");
+            Console.WriteLine($"The ball bounced {bouncingBall(30, 0.66, 1.5)} times");
             //Console.WriteLine($"The ball bounced {bouncingBall(3, 1, 1.5)} times");
             //Console.WriteLine($"{orderWeight("103 123 4444 99 2000")}"); 
             Console.WriteLine($"{orderWeight("2000 10003 1234000 44444444 9999 11 11 22 123")}"); 
@@ -104,13 +104,16 @@ namespace Code_Katas
 
                 int result = 1;
 
-                do
-                {
-
-                    h -= h * 0.66;
+                while(h > w){
                     result++;
 
-                } while (h > w);
+                    h *= b;
+
+                    if (h > w)
+                    {
+                        result++;
+                    }
+                }
 
                 return result;
             }
