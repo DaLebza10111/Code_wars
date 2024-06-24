@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -134,7 +135,7 @@ namespace Code_Katas
         {
             if (!string.IsNullOrEmpty(strng))
             {
-
+                BigInteger intA = BigInteger.Parse(a);
                 List<string> weightsList = strng.Split(' ').ToList();
 
                 // Sort the weights list by the sum of digits, then by string comparison if needed
@@ -146,6 +147,28 @@ namespace Code_Katas
 
             return string.Empty;
 
+        }
+        #endregion
+
+        #region Sum Strings as Numbers
+        /*Given the string representations of two integers, return the string representation of the sum of those integers.*/
+        public static string sumStrings(string a, string b)
+        {
+
+            if (string.IsNullOrEmpty(a))
+            {
+                a = "0";
+            }
+
+            if (string.IsNullOrEmpty(b))
+            {
+                b = "0";
+            }
+
+            BigInteger intA = BigInteger.Parse(a);
+            BigInteger intB = BigInteger.Parse(b);
+
+            return (intA + intB).ToString();
         }
         #endregion
     }
