@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace Code_Katas
         static void Main(string[] args)
         {
             //Console.WriteLine($"The ball bounced {bouncingBall(3,0.66,1.5)} times");
-            //Console.WriteLine($"The ball bounced {bouncingBall(30, 0.66, 1.5)} times");
+            Console.WriteLine($"The ball bounced {bouncingBall(30, 0.66, 1.5)} times");
             //Console.WriteLine($"The ball bounced {bouncingBall(3, 1, 1.5)} times");
             //Console.WriteLine($"{orderWeight("103 123 4444 99 2000")}"); 
             Console.WriteLine($"{orderWeight("2000 10003 1234000 44444444 9999 11 11 22 123")}"); 
@@ -103,13 +104,16 @@ namespace Code_Katas
 
                 int result = 1;
 
-                do
-                {
-
-                    h -= h * 0.66;
+                while(h > w){
                     result++;
 
-                } while (h > w);
+                    h *= b;
+
+                    if (h > w)
+                    {
+                        result++;
+                    }
+                }
 
                 return result;
             }
@@ -134,7 +138,7 @@ namespace Code_Katas
         {
             if (!string.IsNullOrEmpty(strng))
             {
-
+                BigInteger intA = BigInteger.Parse(a);
                 List<string> weightsList = strng.Split(' ').ToList();
 
                 // Sort the weights list by the sum of digits, then by string comparison if needed
@@ -146,6 +150,28 @@ namespace Code_Katas
 
             return string.Empty;
 
+        }
+        #endregion
+
+        #region Sum Strings as Numbers
+        /*Given the string representations of two integers, return the string representation of the sum of those integers.*/
+        public static string sumStrings(string a, string b)
+        {
+
+            if (string.IsNullOrEmpty(a))
+            {
+                a = "0";
+            }
+
+            if (string.IsNullOrEmpty(b))
+            {
+                b = "0";
+            }
+
+            BigInteger intA = BigInteger.Parse(a);
+            BigInteger intB = BigInteger.Parse(b);
+
+            return (intA + intB).ToString();
         }
         #endregion
     }
